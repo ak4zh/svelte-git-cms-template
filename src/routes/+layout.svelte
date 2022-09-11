@@ -10,18 +10,33 @@
 	import { getCurrentRepo } from '$lib/utils';
 	import { writable } from 'svelte/store';
 	import { setContext } from 'svelte'
+	import { goto } from '$app/navigation';
+	import { browser } from '$app/environment';
 
-	$: currentRepo = getCurrentRepo($page.url)
+	// stores
+	/** @type {import('svelte/store').Writable<Object.<string, string | undefined>>} */
+	let searchParams = writable(Object.fromEntries($page.url.searchParams.entries()))
 
 	/** @type {import('svelte/store').Writable<string[]>} */
 	let selectedTags = writable([]);
 
-	/** @type {}*/
 	/** @type {import('svelte/store').Writable<import('svelte-git-cms/types').PostLabels>} */
 	let availableTags = writable([])
 
-	setContext('selectedTags', selectedTags)
+	searchParams.subscribe(params => {
+		// @ts-ignore
+		var queryString = Object.keys(params).filter(key => params[key]).map(key => key + '=' + params[key]).join('&');
+		if (browser) goto(`?${queryString}`, { noscroll: true, keepfocus: true });
+	})
+
+	// contexts
+	setContext('searchParams', searchParams)
 	setContext('availableTags', availableTags)
+
+	// reactive statements
+	$: currentRepo = getCurrentRepo($page.url)
+	$: if ($page.url.pathname !== '/blog') selectedTags.set([])
+	$: searchParams.set({...$searchParams, tags: $selectedTags.toString()})
 </script>
 
 <AppShell>
@@ -44,23 +59,23 @@
 		</AppBar>
 	</svelte:fragment>
 	<svelte:fragment slot="sidebarRight">
-		{#if $availableTags.length}
-		<div class="bg-surface-200 dark:bg-surface-800 p-2">
+		{#if $availableTags.length && $page.url.pathname === '/blog'}
+		<div class="bg-surface-200 dark:bg-surface-800 p-2 pl-0 h-full">
 			<h2>Select Tags</h2>
 			<List tag="ol" selected={selectedTags}>
 				{#each $availableTags as tag}
-				<div style="background-color: #{tag.color}" class="rounded-full">
-					<ListItem hover="hover:bg-primary-500/10" highlight="" lead="#" value={tag.name} class="text-black dark:text-black space-x-0">
-						<svelte:fragment slot="lead">
-							{#if $selectedTags.includes(tag.name)}
-								<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-									<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-								</svg>							  
-							{/if}
-						</svelte:fragment>
-						{tag.name}
-					</ListItem>
-				</div>
+					<div style="background-color: #{tag.color}" class="rounded-r-full shadow-white hover:ring-2 hover:ring-offset-2 {$selectedTags.includes(tag.name) ? 'ring-offset-2 ' : ''}">
+						<ListItem hover="" highlight="" lead="#" value={tag.name} class="text-black dark:text-black space-x-1 py-1 px-1">
+							<svelte:fragment slot="lead">
+								{#if $selectedTags.includes(tag.name)}
+									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+										<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+									</svg>
+								{/if}
+							</svelte:fragment>
+							{tag.name}
+						</ListItem>
+					</div>
 				{/each}
 			</List>
 		</div>
