@@ -15,7 +15,7 @@ export async function handle({ event, resolve }) {
         label_prefix: LABEL_PREFIX,
         label_published: LABEL_PUBLISHED,
     }
-    if (repo !== GITHUB_REPO) config.max_page = 10    
+    if (repo !== GITHUB_REPO) config.max_page = 5
     await githubSync(config)
     const response = await resolve(event);
     return response;
