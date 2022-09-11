@@ -13,7 +13,7 @@ let githubConfig = {
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
     let host = event.url.host.split('.')
-    if (!dev && host.length === 3 && host[0] !== 'www') {
+    if (!dev && host.length === 3 && host.includes('--')) {
         githubConfig.github_repo = host[0].replace('--', '/')
     }
     await githubSync(githubConfig)
