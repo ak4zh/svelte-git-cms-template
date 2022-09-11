@@ -1,22 +1,22 @@
 import { githubSync } from 'svelte-git-cms'
 import { env as privateEnv } from '$env/dynamic/private'
-import { env } from '$env/dynamic/public'
-import { dev } from '$app/environment'
+import { getCurrentRepo } from '$lib/utils'
+import { GITHUB_REPO, LABEL_PREFIX, LABEL_PUBLISHED } from '$lib/siteConfig'
 
-let githubConfig = {
-    github_repo: env.PUBLIC_GITHUB_REPO || 'ak4zh/svelte-git-cms',
-    github_token: privateEnv.GITHUB_TOKEN,
-    label_prefix: env.PUBLIC_LABEL_PREFIX || '',
-    label_published: env.PUBLIC_LABEL_PUBLISHED || ''
-}
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
-    let host = event.url.host.split('.')
-    if (!dev && host.length === 3 && event.url.host.includes('--')) {
-        githubConfig.github_repo = host[0].replace('--', '/')
+    let repo = getCurrentRepo(event.url)
+
+    /** @type {import('svelte-git-cms/types').Config} */
+    let config = {
+        github_repo: repo,
+        github_token: privateEnv?.GITHUB_TOKEN,
+        label_prefix: LABEL_PREFIX,
+        label_published: LABEL_PUBLISHED,
     }
-    await githubSync(githubConfig)
+    if (repo !== GITHUB_REPO) config.max_page = 10    
+    await githubSync(config)
     const response = await resolve(event);
     return response;
 }

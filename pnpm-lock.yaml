@@ -17,7 +17,7 @@ specifiers:
   prettier-plugin-svelte: ^2.7.0
   svelte: ^3.44.0
   svelte-check: ^2.7.1
-  svelte-git-cms: 0.0.9
+  svelte-git-cms: 0.0.10
   svelte-preprocess: ^4.10.7
   tailwindcss: ^3.1.5
   typescript: ^4.7.4
@@ -40,7 +40,7 @@ devDependencies:
   prettier-plugin-svelte: 2.7.0_nk6d2fkgcllkkdynqbuearcure
   svelte: 3.50.1
   svelte-check: 2.9.0_zy537mcxrfn3wq4nghluxnsi5a
-  svelte-git-cms: 0.0.9
+  svelte-git-cms: 0.0.10
   svelte-preprocess: 4.10.7_sxt3mkf5m54vn3maobdwhqzitu
   tailwindcss: 3.1.8_postcss@8.4.16
   typescript: 4.8.3
@@ -2228,8 +2228,8 @@ packages:
       - sugarss
     dev: true
 
-  /svelte-git-cms/0.0.9:
-    resolution: {integrity: sha512-z0PPDAjhsMGd7vm8HTDNfcqXqBK7AJoNW3t2Eza9cQa9c0Hp1aDPAG+YtpqZMSucfWduma21OEkYxGsqNNkeAQ==}
+  /svelte-git-cms/0.0.10:
+    resolution: {integrity: sha512-ndpxRtrFNTBF7GMzmAoED9JXHfNqcV7e1Ll61NrvT8XC/eRUO00K0C2ruBl6lzvAvjAMyjty8hAZULrysnpSdQ==}
     dev: true
 
   /svelte-hmr/0.14.12_svelte@3.50.1:

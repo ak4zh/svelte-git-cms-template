@@ -1,9 +1,10 @@
 import { getCmsData } from 'svelte-git-cms';
-import { env } from '$env/dynamic/public'
+import { getCurrentRepo } from '$lib/utils';
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load({ params }) {
-    const { posts, labels } = await getCmsData(env.PUBLIC_GITHUB_REPO)
+export async function load({ url }) {
+    let repo = getCurrentRepo(url)
+    const { posts, labels } = await getCmsData(repo)
     return {
         posts,
         labels

@@ -9,8 +9,8 @@
 	import { AppShell, AppBar } from '@brainandbones/skeleton';
 	import { SITE_TITLE } from '$lib/siteConfig';
 	import { page } from '$app/stores';
-
 </script>
+
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar>

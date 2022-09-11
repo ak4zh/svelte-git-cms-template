@@ -1,6 +1,5 @@
 <script>
-import { page } from '$app/stores';
-
+    import { page } from '$app/stores';
     import { Button, Card } from '@brainandbones/skeleton';
 
     /** @type {import('./$types').PageServerData} */
