@@ -2,8 +2,7 @@ import { dev } from "$app/environment"
 import { GITHUB_REPO } from "./siteConfig"
 
 const DOMAIN_MAPPING = {
-    "127.0.0.1": 'ak4zh/svelte-git-cms',
-    "easy-vans-learn-182-70-225-212.loca.lt": "sw-yx/swyxkit"
+    "cms": GITHUB_REPO
 }
 
 /**
@@ -11,15 +10,15 @@ const DOMAIN_MAPPING = {
  * @returns {string}
  */
 export function getCurrentRepo(url) {
-    // @ts-ignore
-    if (DOMAIN_MAPPING[url.hostname]) {
-        // @ts-ignore
-        return DOMAIN_MAPPING[url.hostname]
-    }
     let repo = GITHUB_REPO
-    let hostname = url.hostname.split('.')
-    if (!dev && hostname.length === 3 && url.hostname.includes('--')) {
-        repo = hostname[0].replace('--', '/')
+    let urlParts = url.hostname.split('.')
+    if (!dev || urlParts.length === 3) {
+        let subdomain = urlParts[0]
+        // @ts-ignore
+        if (DOMAIN_MAPPING[subdomain]) return DOMAIN_MAPPING[subdomain]
+        if (subdomain.includes('--')) {
+            repo = subdomain.replace('--', '/')
+        }
     }
     return repo
 }
