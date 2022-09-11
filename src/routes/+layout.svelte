@@ -9,13 +9,23 @@
 	import { AppShell, AppBar } from '@brainandbones/skeleton';
 	import { SITE_TITLE } from '$lib/siteConfig';
 	import { page } from '$app/stores';
+	import { getCurrentRepo } from '$lib/utils';
+
+	$: currentRepo = getCurrentRepo($page.url)
+	$: siteName = ` by ${currentRepo.split('/')[0]}`
 </script>
 
 <AppShell>
 	<svelte:fragment slot="header">
 		<AppBar>
 			<svelte:fragment slot="lead">
-				<a href={$page.url.pathname == '/' ? '#' : '/'}>{SITE_TITLE}</a>
+				<a href={$page.url.pathname == '/' ? '#' : '/'}>
+					<div class="flex gap-2 items-end text-xs">
+						<span class="text-3xl">{currentRepo.split('/')[1]}</span>
+						<span>by</span>
+						<span>{currentRepo.split('/')[0]}</span>
+					</div>
+				</a>
 			</svelte:fragment>
 
 			<svelte:fragment slot="trail">
