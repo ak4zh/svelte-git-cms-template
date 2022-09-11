@@ -10,6 +10,7 @@ const config = {
 
 	plugins: [
 		require('@tailwindcss/typography'),
+		require('@tailwindcss/forms'),
 		require("@brainandbones/skeleton/tailwind.cjs")
 	]
 };

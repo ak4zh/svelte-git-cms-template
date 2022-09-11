@@ -2,6 +2,7 @@
 	import '@brainandbones/skeleton/styles/tailwind.css';
 	import '@brainandbones/skeleton/styles/core.css';
 	import '@brainandbones/skeleton/styles/typography.css';
+	import '@brainandbones/skeleton/styles/forms.css';
 	import '@brainandbones/skeleton/styles/themes/theme-seafoam.css';
 	import '../app.postcss';
 	import { LightSwitch } from '@brainandbones/skeleton';
@@ -10,24 +11,23 @@
 	import { page } from '$app/stores';
 
 </script>
+<AppShell>
+	<svelte:fragment slot="header">
+		<AppBar>
+			<svelte:fragment slot="lead">
+				<a href={$page.url.pathname == '/' ? '#' : '/'}>{SITE_TITLE}</a>
+			</svelte:fragment>
 
-<div class="bg-primary-50 dark:bg-primary-600 min-h-screen min-w-screen" data-sveltekit-prefetch>
-	<AppShell>
-		<svelte:fragment slot="header">
-			<AppShell>
-				<svelte:fragment slot="header">
-					<AppBar>
-						<svelte:fragment slot="lead">
-							<a href={$page.url.pathname == '/' ? '#' : '/'}>{SITE_TITLE}</a>
-						</svelte:fragment>
-						(search)
-						<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
-					</AppBar>
-				</svelte:fragment>
-			</AppShell>
-		</svelte:fragment>
-		<div class="max-w-7xl p-4 mx-auto">
-			<slot />
-		</div>
-	</AppShell>
-</div>
+			<svelte:fragment slot="trail">
+				<a href="/blog">blog</a>
+				<LightSwitch />
+			</svelte:fragment>
+		</AppBar>
+	</svelte:fragment>
+	<svelte:fragment slot="pageHeader"></svelte:fragment>
+	<svelte:fragment slot="pageFooter"></svelte:fragment>
+	<!-- Be sure to insert your route <slot> in the default position --->
+	<div class="p-4 mx-auto max-w-7xl">
+		<slot />		
+	</div>
+</AppShell>	
