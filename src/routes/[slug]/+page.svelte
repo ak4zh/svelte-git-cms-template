@@ -5,7 +5,7 @@
 </script>
 
 <Card class="border-4 border-dotted" space="space-y-1">
-	<svelte:fragment slot="header">(header)</svelte:fragment>
-	{data.post?.body}
+	<svelte:fragment slot="header"><h2>{data.post.title}</h2></svelte:fragment>
+	{@html data.post?.body}
 	<svelte:fragment slot="footer">(footer)</svelte:fragment>
 </Card>

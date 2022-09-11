@@ -6,15 +6,20 @@
 	import '../app.postcss';
 	import { LightSwitch } from '@brainandbones/skeleton';
 	import { AppShell, AppBar } from '@brainandbones/skeleton';
+	import { SITE_TITLE } from '$lib/siteConfig';
+	import { page } from '$app/stores';
+
 </script>
 
-<div class="bg-primary-50 dark:bg-primary-600 min-h-screen min-w-screen" data-svelte-prefetch>
+<div class="bg-primary-50 dark:bg-primary-600 min-h-screen min-w-screen" data-sveltekit-prefetch>
 	<AppShell>
 		<svelte:fragment slot="header">
 			<AppShell>
 				<svelte:fragment slot="header">
 					<AppBar>
-						<svelte:fragment slot="lead">(branding)</svelte:fragment>
+						<svelte:fragment slot="lead">
+							<a href={$page.url.pathname == '/' ? '#' : '/'}>{SITE_TITLE}</a>
+						</svelte:fragment>
 						(search)
 						<svelte:fragment slot="trail"><LightSwitch /></svelte:fragment>
 					</AppBar>
@@ -25,5 +30,4 @@
 			<slot />
 		</div>
 	</AppShell>
-	
 </div>
