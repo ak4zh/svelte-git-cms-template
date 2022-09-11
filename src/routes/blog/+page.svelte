@@ -1,12 +1,13 @@
-<script lang="ts">
-    import { AppShell, Card } from '@brainandbones/skeleton';
-    import { RadioGroup, RadioItem } from '@brainandbones/skeleton';    
-    import { writable, type Writable } from "svelte/store";
+<script>
+    import { Card } from '@brainandbones/skeleton';
+    import { getContext } from 'svelte';
 
     /** @type {import('./$types').PageServerData} */
     export let data
 
-    const tagStore: Writable<string> = writable("");
+    /** @type {import('svelte/store').Writable<string[]>} */
+    let availableTags = getContext('availableTags')
+    $: availableTags.set(data.labels)
 </script>
 
     <h1>Posts</h1>
