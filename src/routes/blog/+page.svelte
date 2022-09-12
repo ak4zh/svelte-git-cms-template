@@ -6,10 +6,7 @@
     export let data
     let filteredPosts = data.posts
 
-    /** @type {import('svelte/store').Writable<any[]>} */
     let availableTags = getContext('availableTags')
-
-    /** @type {import('svelte/store').Writable<string[]>} */
     let searchParams = getContext('searchParams')
 
     function filterContent() {

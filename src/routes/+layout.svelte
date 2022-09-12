@@ -1,4 +1,4 @@
-<script lang="ts">
+<script>
 	import '@brainandbones/skeleton/styles/tailwind.css';
 	import '@brainandbones/skeleton/styles/core.css';
 	import '@brainandbones/skeleton/styles/typography.css';
@@ -14,7 +14,10 @@
 	import { browser } from '$app/environment';
 
 	// stores
-	/** @type {import('svelte/store').Writable<Object.<string, string | undefined>>} */
+	/**
+     * @typedef {"tags" | "keyword"} SearchParamsKeys
+     */
+	/** @type {import('svelte/store').Writable<Object<SearchParamsKeys, string>>} */
 	let searchParams = writable(Object.fromEntries($page.url.searchParams.entries()))
 
 	/** @type {import('svelte/store').Writable<string[]>} */
