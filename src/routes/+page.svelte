@@ -41,7 +41,7 @@
         {#each data.recent as post}
             <Card body="space-y-4" >
                 <a href="/{post.front_matter.slug}">
-                    <h6>{post.title}</h6>
+                    <h2>{post.title}</h2>
                 </a>
                 {@html post.front_matter.description}
                 <svelte:fragment slot="footer">{post.reading_time}</svelte:fragment>

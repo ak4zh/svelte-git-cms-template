@@ -5,7 +5,7 @@
 	import '@brainandbones/skeleton/styles/forms.css';
 	import '@brainandbones/skeleton/styles/themes/theme-skeleton.css';
 	import '../app.postcss';
-	import { AppShell, AppBar, LightSwitch, List, ListItem } from '@brainandbones/skeleton';
+	import { AppShell, AppBar, LightSwitch } from '@brainandbones/skeleton';
 	import { page } from '$app/stores';
 	import { getCurrentRepo } from '$lib/utils';
 	import { writable } from 'svelte/store';
@@ -40,7 +40,12 @@
 	$: currentRepo = getCurrentRepo($page.url)
 	$: if ($page.url.pathname !== '/blog') selectedTags.set([])
 	$: searchParams.set({...$searchParams, tags: $selectedTags.toString()})
+	$: console.log($page.url.pathname.split('/'))
 </script>
+
+<svelte:head>
+	<title>{currentRepo.split('/')[1]} | {$page.url.pathname.split('/')[1] || 'home'}</title>
+</svelte:head>
 
 <AppShell>
 	<svelte:fragment slot="header">
