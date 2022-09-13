@@ -64,23 +64,18 @@
 	<svelte:fragment slot="sidebarRight">
 		{#if $availableTags.length && $page.url.pathname === '/blog'}
 		<div class="bg-surface-200 dark:bg-surface-800 p-2 pl-0 h-full">
-			<h2>Select Tags</h2>
-			<List tag="ol" selected={selectedTags}>
+			<h2 class="text-center">Select Tags</h2>
+			<div class="flex flex-col gap-2 mr-2">
 				{#each $availableTags as tag}
-					<div style="background-color: #{tag.color}" class="rounded-r-full shadow-white hover:ring-2 hover:ring-offset-2 {$selectedTags.includes(tag.name) ? 'ring-offset-2 ' : ''}">
-						<ListItem hover="" highlight="" lead="#" value={tag.name} class="text-black dark:text-black space-x-1 py-1 px-1">
-							<svelte:fragment slot="lead">
-								{#if $selectedTags.includes(tag.name)}
-									<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
-										<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-									</svg>
-								{/if}
-							</svelte:fragment>
-							{tag.name}
-						</ListItem>
-					</div>
+					<label style="background-color: #{tag.color};" class="text-black px-2 rounded-r-full shadow-white hover:ring-2 hover:ring-offset-2 {$selectedTags.includes(tag.name) ? 'ring-offset-2 opacity-100' : 'opacity-50 hover:opacity-80'}">
+						<input class="peer sr-only" type="checkbox" value={tag.name} bind:group={$selectedTags} multiple/>
+						<svg class="h-6 w-6 hidden peer-checked:inline-block rounded-full" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						{tag.name}
+					</label>
 				{/each}
-			</List>
+			</div>
 		</div>
 		{/if}
 	</svelte:fragment>
