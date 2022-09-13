@@ -12,6 +12,7 @@
 	import { setContext } from 'svelte'
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
+	import { MetaTags } from 'svelte-meta-tags';
 
 	// stores
 	/**
@@ -43,9 +44,11 @@
 	$: searchParams.set({...$searchParams, tags: $selectedTags.toString()})
 </script>
 
-<svelte:head>
-	<title>{currentRepo.split('/')[1]} | {title}</title>
-</svelte:head>
+<MetaTags
+	{title}
+	titleTemplate="{currentRepo.split('/')[1]} | %s"
+	description="The official site for {currentRepo.split('/')[1]} created and maintained by @{currentRepo.split('/')[0]}"
+/>
 
 <AppShell>
 	<svelte:fragment slot="header">

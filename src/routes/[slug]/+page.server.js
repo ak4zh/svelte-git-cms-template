@@ -7,6 +7,6 @@ export async function load({ params, url }) {
     let repo = getCurrentRepo(url)
     const { posts } = await getCmsData(repo)
     let post = posts.find(item => item.front_matter.slug === params.slug)
-    if (!post) throw error(404, 'Not found');
-    return { post }
+    if (post) return { post };
+    throw error(404, 'Not found');
 }
