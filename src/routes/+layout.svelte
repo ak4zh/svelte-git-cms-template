@@ -37,14 +37,14 @@
 	setContext('availableTags', availableTags)
 
 	// reactive statements
+	$: title = $page.url.pathname.split('/').filter(e => e).slice(-1)[0] || 'home'
 	$: currentRepo = getCurrentRepo($page.url)
 	$: if ($page.url.pathname !== '/blog') selectedTags.set([])
 	$: searchParams.set({...$searchParams, tags: $selectedTags.toString()})
-	$: console.log($page.url.pathname.split('/'))
 </script>
 
 <svelte:head>
-	<title>{currentRepo.split('/')[1]} | {$page.url.pathname.split('/')[1] || 'home'}</title>
+	<title>{currentRepo.split('/')[1]} | {title}</title>
 </svelte:head>
 
 <AppShell>
@@ -86,7 +86,6 @@
 	</svelte:fragment>
 	<svelte:fragment slot="pageHeader"></svelte:fragment>
 	<svelte:fragment slot="pageFooter"></svelte:fragment>
-	<!-- Be sure to insert your route <slot> in the default position --->
 	<div class="p-4 mx-auto max-w-7xl">
 		<slot />		
 	</div>
