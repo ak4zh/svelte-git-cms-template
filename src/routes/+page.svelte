@@ -1,6 +1,7 @@
 <script>
     import { page } from '$app/stores';
-    import { Button, Card } from '@brainandbones/skeleton';
+    import ArticleCard from '$lib/ArticleCard.svelte';
+    import { Button } from '@brainandbones/skeleton';
 
     /** @type {import('./$types').PageServerData} */
     export let data
@@ -24,12 +25,7 @@
     <h1>Featured Posts</h1>
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {#each data.featured as post}
-            <Card body="space-y-4">
-                <a href="/{post.front_matter.slug}">
-                    <h6>{post.title}</h6>
-                </a>
-                {@html post.body}
-            </Card>
+            <ArticleCard {post}/>
         {/each}
     </section>
 {/if}
@@ -39,13 +35,7 @@
     <h1>Recent Posts</h1>
     <section class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
         {#each data.recent as post}
-            <Card body="space-y-4" >
-                <a href="/{post.front_matter.slug}">
-                    <h2>{post.title}</h2>
-                </a>
-                {@html post.front_matter.description}
-                <svelte:fragment slot="footer">{post.reading_time}</svelte:fragment>
-            </Card>
+            <ArticleCard {post}/>
         {/each}
     </section>
 {:else}

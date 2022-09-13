@@ -1,0 +1,34 @@
+<script>
+    import { Card, Avatar } from '@brainandbones/skeleton';
+
+    /** @type {import('svelte-git-cms/types').Post} */
+    export let post
+</script>
+
+<Card class="cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-xl overflow-hidden">
+    <svelte:fragment slot="header">
+        <div class="-mt-4 -mx-4">
+        </div>
+    </svelte:fragment>
+    <div class="space-y-4">
+        <a href="/{post.front_matter.slug}" class="inline-flex">
+            <h2 class="text-primary-500 underline decoration-dotted">
+                {post.title}
+            </h2>
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"></path><path d="M5 5a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-3a1 1 0 10-2 0v3H5V7h3a1 1 0 000-2H5z"></path></svg>
+        </a>
+        <h3>{post.reading_time}</h3>
+        <article class="text-surface-400">
+            {post.front_matter.description}
+        </article>
+    </div>
+    <svelte:fragment slot="footer">
+        <div class="flex justify-start items-center space-x-4">
+            <Avatar src="{post.author.avatar_url}" size="sm" outlined />
+            <div>
+                <h6 class="font-bold">{post.author.username}</h6>
+                <p>{new Date(post.created_at).toLocaleString()}</p>
+            </div>
+        </div>
+    </svelte:fragment>
+</Card>
