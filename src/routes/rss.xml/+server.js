@@ -28,7 +28,7 @@ const xml =
           <title>${post.title}</title>
           <description>A blog built with SvelteKit about tech and stuff!</description>
           <link>${url.origin}/posts/${post.front_matter.slug}/</link>
-          <pubDate>${new Date(post.date)}</pubDate>
+          <pubDate>${new Date(post.created_at)}</pubDate>
           <content:encoded>${''} 
             <div style="margin-top: 50px; font-style: italic;">
               <strong>
