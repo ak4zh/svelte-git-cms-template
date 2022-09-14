@@ -1,9 +1,9 @@
 <script>
+	import '@brainandbones/skeleton/styles/themes/theme-skeleton.css';
 	import '@brainandbones/skeleton/styles/tailwind.css';
 	import '@brainandbones/skeleton/styles/core.css';
 	import '@brainandbones/skeleton/styles/typography.css';
 	import '@brainandbones/skeleton/styles/forms.css';
-	import '@brainandbones/skeleton/styles/themes/theme-skeleton.css';
 	import '../app.postcss';
 	import { AppShell, AppBar, LightSwitch } from '@brainandbones/skeleton';
 	import { page } from '$app/stores';
@@ -13,7 +13,7 @@
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/environment';
 	import { MetaTags } from 'svelte-meta-tags';
-
+	
 	// stores
 	/**
      * @typedef {"tags" | "keyword"} SearchParamsKeys
@@ -52,9 +52,10 @@
 
 <AppShell>
 	<svelte:fragment slot="header">
-		<AppBar>
+		<AppBar padding="px-4 py-2 md:py-4">
 			<svelte:fragment slot="lead">
-				<a href={$page.url.pathname == '/' ? '#' : '/'}>
+				<!-- Drawer Menu -->
+				<a href={$page.url.pathname == '/' ? '' : '/'}>
 					<div class="flex gap-2 items-end text-xs">
 						<span class="text-3xl">{currentRepo.split('/')[1]}</span>
 						<span>by</span>
