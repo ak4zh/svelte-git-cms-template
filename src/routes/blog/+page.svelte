@@ -1,6 +1,5 @@
 <script>
     import ArticleCard from '$lib/ArticleCard.svelte';
-    import { Card } from '@brainandbones/skeleton';
     import { getContext } from 'svelte';
 
     /** @type {import('./$types').PageServerData} */
@@ -33,7 +32,7 @@
 <input bind:value={$searchParams.keyword}/>
 <h1>Posts</h1>
 <section class="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center">
-    {#each filteredPosts as post}      
-        <ArticleCard {post}/>
+    {#each filteredPosts as post}
+        <div id='img'><ArticleCard {post}/></div>
     {/each}
 </section>

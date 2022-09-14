@@ -6,6 +6,9 @@ import { GITHUB_REPO, LABEL_PREFIX, LABEL_PUBLISHED } from '$lib/siteConfig'
 
 /** @type {import('@sveltejs/kit').Handle} */
 export async function handle({ event, resolve }) {
+    if (event.url.pathname.startsWith("/~og")) {
+        return fetch(`https://og.tailgraph.com/og${event.url.search}`);
+    }
     let repo = getCurrentRepo(event.url)
 
     /** @type {import('svelte-git-cms/types').Config} */

@@ -1,13 +1,28 @@
 <script>
+    import { page } from '$app/stores';
     import { Card, Avatar } from '@brainandbones/skeleton';
+    import { getCurrentRepo } from './utils';
 
     /** @type {import('svelte-git-cms/types').Post} */
     export let post
+
+    const repo = getCurrentRepo($page.url)
+    let ogImage = `/~og?fontFamily=Roboto&title=${post.title}`
+    +`&titleTailwind=text-gray-800%20font-bold%20text-6xl`
+    // +`&text=${post.front_matter.description}`
+    +`&textTailwind=text-gray-700%20text-2xl%20mt-4`
+    +`&logoTailwind=h-8`
+    +`&bgTailwind=bg-white`
+    +`&footer=${$page.url.hostname}`
+    +`&footerTailwind=text-teal-600`
 </script>
 
 <Card class="cursor-pointer transition-transform hover:-translate-y-1 hover:shadow-xl overflow-hidden">
     <svelte:fragment slot="header">
         <div class="-mt-4 -mx-4">
+            <a href="/{post.front_matter.slug}">
+                <img src="{ogImage}" alt="{post.title}" />
+            </a>
         </div>
     </svelte:fragment>
     <div class="space-y-2">
