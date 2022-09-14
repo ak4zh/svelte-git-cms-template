@@ -15,14 +15,16 @@ export async function GET({ url }) {
 }
 
 const xml =
-  (posts, repo, url) => `<rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0">
+  (
+    /** @type {import('svelte-git-cms/types').Post[]} */ posts, /** @type {string} */ repo, /** @type {URL} */ url
+  ) => `<rss xmlns:dc="https://purl.org/dc/elements/1.1/" xmlns:content="https://purl.org/rss/1.0/modules/content/" xmlns:atom="https://www.w3.org/2005/Atom" version="2.0">
   <channel>
     <title>${repo.split('/')[0]}</title>
     <link>${''}</link>
     <description>A blog built with SvelteKit about tech and stuff!</description>
     ${posts
       .map(
-        post =>
+        (        /** @type {{ title: any; front_matter: { slug: any; }; created_at: string | number | Date; }} */ post) =>
           `
         <item>
           <title>${post.title}</title>
