@@ -18,7 +18,7 @@ specifiers:
   prettier-plugin-svelte: ^2.7.0
   svelte: ^3.44.0
   svelte-check: ^2.7.1
-  svelte-git-cms: 0.0.12
+  svelte-git-cms: 0.0.13
   svelte-meta-tags: ^2.6.3
   svelte-preprocess: ^4.10.7
   tailwindcss: ^3.1.5
@@ -28,8 +28,8 @@ specifiers:
 devDependencies:
   '@brainandbones/skeleton': 0.37.32
   '@playwright/test': 1.25.2
-  '@sveltejs/adapter-auto': 1.0.0-next.73
-  '@sveltejs/kit': 1.0.0-next.481_svelte@3.50.1+vite@3.1.0
+  '@sveltejs/adapter-auto': 1.0.0-next.75
+  '@sveltejs/kit': 1.0.0-next.483_svelte@3.50.1+vite@3.1.0
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.1.8
   '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
   autoprefixer: 10.4.8_postcss@8.4.16
@@ -43,7 +43,7 @@ devDependencies:
   prettier-plugin-svelte: 2.7.0_nk6d2fkgcllkkdynqbuearcure
   svelte: 3.50.1
   svelte-check: 2.9.0_zy537mcxrfn3wq4nghluxnsi5a
-  svelte-git-cms: 0.0.12
+  svelte-git-cms: 0.0.13
   svelte-meta-tags: 2.6.3_typescript@4.8.3
   svelte-preprocess: 4.10.7_sxt3mkf5m54vn3maobdwhqzitu
   tailwindcss: 3.1.8_postcss@8.4.16
@@ -190,35 +190,35 @@ packages:
       picomatch: 2.3.1
     dev: true
 
-  /@sveltejs/adapter-auto/1.0.0-next.73:
-    resolution: {integrity: sha512-KvCnZtpyfJ6mhCX5jSTn/C4KfBe22VNcTLaHKBhdp/DUDDHJHX4so9nfSAXIC6TuLpxsKnA6dDKLVojlMe9H6g==}
+  /@sveltejs/adapter-auto/1.0.0-next.75:
+    resolution: {integrity: sha512-UEE6XkeXVrNhpEceqcCbtfV5EYzulIt1D/L+RsjIVsPVtUIZMMpPWzuHHzVvPemFRAuYho+4C1hJjIJ9iCgPeQ==}
     dependencies:
-      '@sveltejs/adapter-cloudflare': 1.0.0-next.33
-      '@sveltejs/adapter-netlify': 1.0.0-next.77
-      '@sveltejs/adapter-vercel': 1.0.0-next.74
+      '@sveltejs/adapter-cloudflare': 1.0.0-next.34
+      '@sveltejs/adapter-netlify': 1.0.0-next.78
+      '@sveltejs/adapter-vercel': 1.0.0-next.76
     transitivePeerDependencies:
       - encoding
       - supports-color
     dev: true
 
-  /@sveltejs/adapter-cloudflare/1.0.0-next.33:
-    resolution: {integrity: sha512-RNHHv3qcIZG7JbvucZEUEM5Vxqt6VApfIpXcOuAfq5IhJ+AOR33L+aAtkbIxhCcXr8d237YHibNWFSnxCHoVOg==}
+  /@sveltejs/adapter-cloudflare/1.0.0-next.34:
+    resolution: {integrity: sha512-9/YJsx5O+iy2+XGuH0vVzZ9OSeHGjkInh8JG8CLmIc0cKkv2t7sEu7qQ/qXA5CcvmS1AqNSUgIMxGoeEDVlO3g==}
     dependencies:
       '@cloudflare/workers-types': 3.16.0
       esbuild: 0.15.7
       worktop: 0.8.0-next.14
     dev: true
 
-  /@sveltejs/adapter-netlify/1.0.0-next.77:
-    resolution: {integrity: sha512-g4+i8xQROxw4Olt5T0bJAj3qCDuluQ/JnvzqajEz620COuIddpa2B1xK5DmbAhxQox823jLNTxg7LOEpBqD3bw==}
+  /@sveltejs/adapter-netlify/1.0.0-next.78:
+    resolution: {integrity: sha512-Yyn/j/0QcLK3Db442ducLUZmyvkO74j7Gdcwu9xN0fQN3kBlCJP9Itx5o4SySrPFGc4Q8cLJ5ELNg+mWduLBAA==}
     dependencies:
       '@iarna/toml': 2.2.5
       esbuild: 0.15.7
       set-cookie-parser: 2.5.1
     dev: true
 
-  /@sveltejs/adapter-vercel/1.0.0-next.74:
-    resolution: {integrity: sha512-BMAeib/aH0JdCyMncnugZteVMc47DfKtqE49BpH8JtiIBna34mkYevUWFLyIEVjoNUu2hHr9GMZXBI0q7JL8tQ==}
+  /@sveltejs/adapter-vercel/1.0.0-next.76:
+    resolution: {integrity: sha512-Od9DBfeMwWC/sZNeCJw4TYVE3LMR8lGJivSdkXWgpvksgG+QizLyzTfvBacapId3wcu+7X4PPTLoH00o5iQGEQ==}
     dependencies:
       '@vercel/nft': 0.22.1
       esbuild: 0.15.7
@@ -227,8 +227,8 @@ packages:
       - supports-color
     dev: true
 
-  /@sveltejs/kit/1.0.0-next.481_svelte@3.50.1+vite@3.1.0:
-    resolution: {integrity: sha512-rgt6KKjUmx/S/a/duntAp+yds9F3fSm6uq8nvfWHuT1aVGSC5sOdNDrKqck7PCUc9/GPJ6WJu3et5R69hqevRw==}
+  /@sveltejs/kit/1.0.0-next.483_svelte@3.50.1+vite@3.1.0:
+    resolution: {integrity: sha512-0aiVdVJSy1kiK7xp4bw81qjDkErVaA6oIPlpbjsIYe2UYfeg3aRtST41b6XzLbyg61qLlHVGoM5WTLTIdLnbAQ==}
     engines: {node: '>=16.14'}
     hasBin: true
     requiresBuild: true
@@ -2025,8 +2025,8 @@ packages:
       - sugarss
     dev: true
 
-  /svelte-git-cms/0.0.12:
-    resolution: {integrity: sha512-271lA2vcgzbgWh26USb+oJrN2oN5ErU0/oxjZ9+nFIJCXP1ZNR9DJxqKqdCqRF1Uae+j2NTmTZxo9q3g/6iTIg==}
+  /svelte-git-cms/0.0.13:
+    resolution: {integrity: sha512-VSp6L6NygpwhA92YAOvznKKKwS0yap7lhU7A0VIOis5kyJ788w/TKN6YOaE6b4KVkABvNzCMKMmgcq4BoxQulg==}
     dev: true
 
   /svelte-hmr/0.14.12_svelte@3.50.1:

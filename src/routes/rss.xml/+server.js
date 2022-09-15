@@ -24,7 +24,7 @@ const xml =
     <description>A blog built with SvelteKit about tech and stuff!</description>
     ${posts
       .map(
-        (        /** @type {{ title: any; front_matter: { slug: any; }; created_at: string | number | Date; }} */ post) =>
+        (post) =>
           `
         <item>
           <title>${post.title}</title>

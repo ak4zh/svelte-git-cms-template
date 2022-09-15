@@ -17,6 +17,7 @@ export async function handle({ event, resolve }) {
         github_token: privateEnv?.GITHUB_TOKEN,
         label_prefix: LABEL_PREFIX,
         label_published: LABEL_PUBLISHED,
+        allowed_authors: '*'
     }
     if (repo !== GITHUB_REPO) config.max_page = 5
     await githubSync(config)
